@@ -1,0 +1,50 @@
+Part I Questions:
+
+Given the alphabetically sorted collection in this checkpoint, how many
+iterations would it take to find the value "G" using linear search?
+- given the array ["A","B","C","D","E","F","G"]
+- it would take 7 iterations using linear search
+- it would take 3 iterations to find using binary search
+- calculate fib(10), fib(11), fib(12) by hand, assuming we are starting with fib(0)
+and given fib(8) = 21 and fib(9) = 34 per the assignment and our method.
+fib(10) = fib(9) + fib(8) => 34 + 21 = 55
+fib(11) = fib(10) + fib(9) => 55 + 34 = 89
+fib(12) = fib(11) + fib(10) => 89 + 55 = 144
+
+Long hand version:
+
+n |fib(n-2)|fib(n-1)|fib(n)|
+----------------------------
+0 |	 -      |     - 	| 0
+1 |	 -      |     0 	| 1
+2 |	 0      |     1 	| 1
+3 |	 1      |     1 	| 2
+4 |	 1      |     2 	| 3
+5 |	 2      |     3 	| 5
+6 |	 3      |     5 	| 8
+7 |	 5      |     8 	| 13
+8 |	 8      |     13  | 21
+9 |	 13     |     21	| 34
+10|	 21     |     34	| 55
+11|	 34     |     55 	| 89
+11|	 55     |     89	| 144
+
+
+Part II questions:
+
+Using the recursive implementation of the Fibonacci sequence given in the assignment, compare the run times for fib(20) using linear and recursive.
+
+user     system      total        real
+iterative fib(20)  0.000023   0.000003   0.000026 (  0.000018)
+recursive fib(20)  0.002470   0.000004   0.002474 (  0.002482)
+
+The recursive version takes much longer in this example. If we wanted to make the recursion
+more efficient, we'd need to use a hash to store the fibonacci numbers that were already calculated, then check if they exist in the hash, e.g. use memoization, and use them if they do, otherwise, do the calculation.
+
+1. Given an unsorted collection of 1 million items, which algorithm would you choose--linear search or binary search? Would you use an iterative or recursive search? Why?
+
+For an unsorted array, I'd use a linear search because binary search does not work on unsorted collections. In terms of search algorithm, I'd use linear search over a (purely) recursive one because it would be faster. For linear search, best case is O(1), if your item is first in the array, and worst case is O(n).
+
+2. Given a sorted collection of a million items, which algorithm would you choose? What search function would you use? Why?
+
+Given a sorted collection, I'd choose the binary search because the average run time would be better O(log n) where the base is 2 compared to linear. Both could be O(1) if first item was item being searched for, but worst case for the linear search would be O(n). Binary search works by searching subarrays, each time dividing the length of the array by 2. For choosing a search solution (iterative vs. recursive), since we are not doing a calculation (e.g. the recursive Fibonnaci problem above), but rather, simply searching for a value, it seems like recursion could be faster.
