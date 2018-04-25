@@ -1,8 +1,6 @@
 
-# iterative version of the fibonnaci sequence
 def iterative_fib(n)
-# find the fibonnaci number by adding the 2 numbers preceeding it
-return nil if n < 0
+ return nil if n < 0
  a = 0
  b = 1
  temp = 0
