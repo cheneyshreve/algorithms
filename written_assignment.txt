@@ -1,0 +1,24 @@
+
+Questions 4 & 5:
+- Use benchmark to compare the sort algorithms covered in this assignment.
+- benchmark graph in spec/sort.png
+
+It's difficult to draw comparisons from the benchmark tests because the test dataset used was an array of random numbers, which limits discussion somewhat. Also because the run times were quite similar.
+
+In general, we'd expect the following:
+
+| search function | worst-case | best-case | average-case |
+----------------------------------------------------------
+|bucket sort      | O(n^2)     | O(n + k)  | O(n + k)     |
+----------------------------------------------------------
+|bubble sort      | O(n^2)     | O(n)      | O(n^2)       |
+----------------------------------------------------------
+|heap sort        | O(n log n) | O(n log n)  | O(n log n) |
+----------------------------------------------------------
+|quick sort       | O(n^2)     | O(n log n)  | O(n log n) |
+----------------------------------------------------------
+|merge sort       | O(n log n)  | O(n log n) | O(n log n) |
+
+(referencing: http://www.growingwiththeweb.com/, https://www.geeksforgeeks.org/merge-sort/)
+
+In the benchmark tests, we saw some less expected results, e.g. quick sort and merge sort were not performing as well as expected in comparison to other algorithms. We would expect quick sort, merge sort, and heap sort to perform the best. This could be because the spread of the data dictated that each were performing closer to worst-case runtimes, e.g. if the pivot points were poor for the quick sort algorithm, that would negatively impact performance and increase the runtime. Linear sort and insertion sort took similar times, and longer than some of the other algorithms, which was expected. The heap sort performed better than most other algorithms, as expected. Bucket sort performs best when the collection can be evenly distributed in the buckets, and choosing a bucket number of 5 with an array of 50 helped meet that condition, so that algorithm likely performed closer to its best-case runtime. The bubble sort performed faster than expected in the benchmark tests, which recommends that the list or random numbers was "somewhat sorted" to begin with so the bubble sorted needed fewer iterations. To make more conclusive results, I'd want to test the data against datasets with different distributions/properties, however, these tests do recommend that the property of the data itself is important in influencing the outcomes.
