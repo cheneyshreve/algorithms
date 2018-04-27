@@ -22,12 +22,10 @@ def insertion_sort(collection)
 end
 
 # modified after http://www.growingwiththeweb.com/
-# modifications made to the insertion sort method call and method
+# modifications made to the insertion sort method
 
-def bucket_sort(array, bucket_size = 5)
-  if array.empty?
-    return
-  end
+def bucket_sort(array, bucket_size = 3)
+  return nil if array.empty?
   # Determine minimum and maximum values
   min_value = array.min
   max_value = array.max
@@ -40,11 +38,12 @@ def bucket_sort(array, bucket_size = 5)
   end
 
   # Distribute input array values into buckets
+  # use the min_value to define the index
   (0..array.length - 1).each do |i|
     buckets[((array[i] - min_value) / bucket_size).floor].push(array[i])
   end
 
-# call inserion sort on the buckets
+# call insertion sort on the buckets
   array.clear
   (0..buckets.length - 1).each do |i|
     if !buckets[i].empty?
