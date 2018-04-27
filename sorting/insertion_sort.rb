@@ -1,5 +1,5 @@
 
-def inserstion_sort(collection)
+def insertion_sort(collection)
   sorted_collection = [collection.delete_at(0)]
 
   for val in collection
