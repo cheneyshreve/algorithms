@@ -43,7 +43,7 @@ def find_largest(collection)
   largest
 end
 ```
-In this variation of the #find_largest method, we're iterating over a 2D collection for the complete length of the collection, which means we'll have O(n) for each loop, or O (k * n), but we'll ignore the constant and simply as O(n). The worst-case O(n), best-case is Ω(n), and bounded-case will be Θ(n) since we are iterating through the length of both collections.
+In this variation of the #find_largest method, we're iterating over a 2D collection for the complete length of the collection, which means we'll have O(n) for each loop, or O (n^2). The worst-case O(n^2), best-case is Ω(n^2), and bounded-case will be Θ(n^2) since we are iterating through the length of both collections.
 
 4. What's the B-O for the algorithm below?
 ```
