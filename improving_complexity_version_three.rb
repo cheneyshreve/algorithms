@@ -18,7 +18,7 @@ def heap_sort(array)
     n -= 1
     down_heap(a, 1, n)
   end
-  a.drop(1)                     
+  a.drop(1)
 end
 
 def down_heap(a, parent, limit)

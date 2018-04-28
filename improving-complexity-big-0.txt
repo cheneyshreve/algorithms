@@ -1,0 +1,24 @@
+Written assignment, find the Big-O for each of the three versions of the Ruby code written
+for the assignment.
+
+Part 1 : Code optimization
+- The following code optimizations were made:
+#1 The fist step is concatenating the input arrays. The code in the example uses a nested loop to loop
+over the arrays, and then over their individual elements for a run time of O(n^2) for that part of the code.
+We can improve this (time wise) using the flatten method, which condenses the values of the multidimensional combined_array into a 1D array. We're making a tradeoffs using the flatten method. If you look at the source code
+for flatten, it makes a copy of the array, which takes additional memory. I used it here for the code optimization piece because I think it improves readability, but, if I'm interpreting the source code for flatten
+correctly, it also reduces the time complexity from O(n^2) to O(n) for that portion of the code.
+#2 We can rewrite the statement defining sorted_array to equal the last element in the array,
+which allows us to also remove the second conditional within the while loop, which should improve
+run time a small amount.
+#3 Define a variable, current, and modify <= to be = in the first conditional so that we
+reduce the number of times we're accessing the sorted_array.
+Modifications #2,#3 will not impact the Big-O, however.
+Considering the remaining code, we have two loops; a for loop over the elements in combined_array, and a while loop over elements in the sorted_array, for a run time of O(n^2). The code is optimized already to a degree by using the break statements to end the loop if certain conditions are met. Overall, we can simplify by saying the Big-O for this algorithm would be O(n^3).
+
+
+Part 2: Time optimization
+- For the time optimization, I modified the sorting portion of the code in #poorly_written_ruby_time_opt to use a faster searching algorithm. The original code uses an iterative approach using two separate loops with a Big-O of O(n^2). The modified code uses quick sort, which has a Big-O of O(n log n). Alternatively, I could have used other algorithms such as merge sort or heap sort, which have the same run times. Heap sort has better spatial complexity compared to the others, so I chose to use that for part 3 of the assignment. A global search would be faster using quick sort, but a min/max search is faster using heap sort so it's a trade off.
+
+Part 3: Space optimization
+- For this part of the assignment, I modified the sorting algorithm to use heap sort. Heap sort has a space complexity of O(1) compared to quick sort, which is O(n log n).
