@@ -1,0 +1,132 @@
+1. What is the Big-O of the algorithm below?
+
+```
+def goodbye_world(n)
+ puts "Goodbye World! #{n}"
+end
+```
+The Big-O for #goodbye_world is O(1) or constant time. It will always take the same amount of time to complete, regardless of the input. Pragmatically, we only have one world that we know of, so this makes sense. The worst-case O(1), best-case is Ω(1), and bounded-case will be Θ(1).
+
+
+2. What's the Big-O of the algorithm below?
+
+```
+def find_largest(collection)
+  largest = collection[0]
+
+  collection.length.times do |i|
+    if collection[i] >= largest
+      largest = collection[i]
+    end
+  end
+  largest
+end
+```
+In the #find_largest method, we're taking in a collection of unknown length as our argument, setting the variable largest to the first item in the colletion, then iterating over the collection, swapping the current element with largest if is greater than or equal to largest, then finally returning the end result array. The section of code that is most time consuming will be the iteration over the collection, which will show a linear growth pattern, thus be O(n). As the size of the collection grows, the time it takes to iterate over the collection will grow in a linear, predictable fashion. The worst-case O(n), best-case is Ω(n), and bounded-case will be Θ(n).
+
+3. What's the Big-O of the algorithm below?
+
+```
+def find_largest(collection)
+  largest = collection[0][0]
+
+  collection.length.times do |i|
+    subcollection = collection[i]
+
+    subcollection.length.times do |j|
+      if subcollection[j] >= largest
+        largest = subcollection[j]
+      end
+    end
+  end
+
+  largest
+end
+```
+In this variation of the #find_largest method, we're iterating over a 2D collection for the complete length of the collection, which means we'll have O(n) for each loop, or O (k * n), but we'll ignore the constant and simply as O(n). The worst-case O(n), best-case is Ω(n), and bounded-case will be Θ(n) since we are iterating through the length of both collections.
+
+4. What's the B-O for the algorithm below?
+```
+def numbers(n)
+  if (n == 0)
+    return 0
+  elsif (n == 1)
+    return 1
+  else
+   return numbers(n - 1) + numbers(n - 2)
+  end
+ end
+ ```
+ In the #numbers method, we are using a recursive call to calculate the Fibonacci number. This algorithm will grow with the size of the input, n, but that growth won't be linear, for numbers higher than 2, it will be exponential so it will have a worst-case Big-O of O(1.6180^n) (the Golden ratio), the best-case is Ω(1) for n of 0 or 1, and the bounded-case would be Θ(1.6180^n).
+
+
+ 5. What is the Big-O of the algorithm below?
+
+ ```
+ def iterative(n)
+   num1 = 0
+   num2 = 1
+
+   i = 0
+   while i < n - 1
+     tmp = num1 + num2 # 1
+     num1 = num2 # num1 = 1
+     num2 = tmp # num2 = 1
+     i += 1  # i = 1
+   end
+
+   num2
+ end
+ ```
+ In the #iterative method above, we're taking in a parameter, n, and swapping the values of some intermediate variables within a while loop, which will run until i is less than n - 1. This algorithm will have a linear run time, or O(n), because, as n increases, the number of times that the while loop will run increases (once the value of n is greater 1). So for best-case, we'd have Ω(1) or constant time, for n values of 0, 1. For bounded-case and worst-case, we'd have Θ(n) and O(n), respectively.
+
+ 6. What's the Big-O of the algorithm below?
+
+ ```
+ def sort(collection, from=0, to=nil)
+   if to == nil
+     to = collection.count - 1
+   end
+
+   if from >= to
+     return
+   end
+
+   pivot = collection[from]
+
+   min = from
+   max = to
+
+   free = min
+
+   while min < max
+    if free == min
+      if collection[max] <= pivot
+        collection[free] = collection[max]
+        min += 1
+        free = max
+      else
+        max -= 1
+      end
+     elsif free == max
+       if collection[min] > pivot
+          colleciton[free] = collection[min]
+          max -= 1
+          free = min
+       else
+           min += 1
+       end
+     else
+       raise "Inconsistent state"
+     end
+    end
+
+    collection[free] = pivot
+
+    sort collection, from, free - 1
+    sort collection, free + 1, to
+
+    collection
+ end
+```
+The #sort method above is using the quick sort algorithm. The most time intensive parts of the code will be while loop and the recursive calls. The value of the pivot point with regard to other items in the collection will also influence the run time, e.g. if the pivot point is the highest or lowest value in the list, we'll end up with worst-case behavior for run time. If we break the code down, we're initially partitioning the input collection based on the pivot point into subcollections, which gives us a logarithmic component, then sorting these subcollections, which has a linear runtime based on the size of the subcollection. So the main part of the while loop has log * n. Once we break out of the while loop, we still have some recursion going on for the "right" and "left" subcollections around our paritition, so that gives us n * n, or O(n^2). Since O(n^2) is the more time intensive element, we simplify by saying O(n^2) is our worst-case run time, and that our best-case and average-cases will be O (n log n). The latter assumption is assuming that we have fewer recursive calls, e.g. when we call sort collection outside of the while loop, we're already sorted and thus don't have to go through the recursions.
