@@ -1,0 +1,57 @@
+1)	Describe an analogy for relating an algorithm that has efficiency O(1) and another that has an O (2n) efficiency.
+
+
+-	An algorithm with O(1) has a constant rate of growth so a real-world example could be the rings of a tree, which growth (relatively) constantly each year. An example of exponential growth would be bacteria colonies, which have an explosively fast (e.g. exponential) rate of growth.
+
+2)	In plain English, what is the best-case scenario for a binary search?
+
+-	Binary search is a “divide and conquer” algorithm intended for use with sorted collections. This simply means that each time the algorithm runs, it halves the number of elements examined. In the best-case scenario, the algorithm would return the search target on the first iteration, so the run time would be constant, or O(1).
+
+3)	In plain English, what is the worst-case scenario for a binary search?
+
+-	The worst-case scenario for a binary search is the number of elements divided by two, since the algorithm repeatedly halves the items in the collection being searched each time, plus one to finish to completion. In math, this relationship is represented by log base 2 of n, where n is the number of elements being examined, so the worst-case run time is O ( log2n).
+
+4)	In plain English, what is the bounded-case scenario for a binary search?
+
+-	We know that for a bounded case scenario, we’re approximating an average run time, or somewhere between the best-case and worst-case scenarios. The average case for binary search is O (log n) , essentially an estimate of the number of times the algorithm will halve the collection before finding the solution.
+
+5)	Create a graph with the CSV file provided. Use these as a reference for the questions below.
+
+6)	What is the limit of the function as n approaches infinity.
+
+-	It’s unbounded, or it doesn’t exist. It keeps going to infinity.
+
+7) 	What is the Big-O of an algorithm that has the data points given?
+
+-	The Big-O for the data points given is O (n log n), or “log linear”
+
+8)	Write a Ruby method that takes a number n. The method must print the worst-case number of iterations for linear search to find an item in a collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
+
+| n  | Worst-Case iterations |
+|----|:---------------:|
+| 1  | 1  |
+| 2  | 2  |
+| 3  | 3  |
+| 4  | 4  |
+| 5  | 5  |
+| 6  | 6  |
+| 7  | 7  |
+| 8  | 8  |
+| 9  | 9  |
+| 10 | 10 |
+
+9)	Create a graph of the output, analyze and label the Big-O.
+
+-	The function is linear, so it has “linear time” or  O(n). The graph is labeled graph_question9.png and saved in main directory.
+
+10) 	What is the Big-O of binary search?
+
+-  O (log2 n) which is usually simplified as O (log n)
+
+11)  What is the Big- Ω of binary search?
+
+-  Ω (1), or O(1) in Big-O
+
+12) What is the Big-Ө of binary search?
+
+- Ө (log n), or O(log n) in Big-O
