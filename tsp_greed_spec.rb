@@ -42,11 +42,11 @@ RSpec.describe Path, type: Class do
       expect(result).to eq( "The nearest neighbor to Kent is Renton at 9 miles.")
     end
 
-    it "returns the shortest path between 2 cities: test 3" do
+    it "returns message if item not found from input graph" do
       path_to_tacoma = Path.new
-      path_to_tacoma.nearest_possible_neighbor([puyallup, redmond,bellevue], tacoma)
+      path_to_tacoma.nearest_possible_neighbor([bellevue], tacoma)
       result = path_to_tacoma.path
-      expect(result).to eq("The nearest neighbor to Tacoma is Puyallup at 10 miles.")
+      expect(result).to eq("Sorry, destination not found.")
     end
   end
 

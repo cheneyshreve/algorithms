@@ -77,12 +77,12 @@ class Path
   end
 
   def path
-    if @path.nil?
+    if @path.empty?
       return "Sorry, destination not found."
     else
 
       tmp = [@path.flatten]
-      shortest = tmp[0].last
+      shortest = 10000
 
       tmp.each do |route|
          d = route.last
@@ -98,5 +98,5 @@ class Path
          end
       end
     end
-  end
+   end
 end
